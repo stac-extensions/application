@@ -1,0 +1,146 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://stac-extensions.github.io/application/v0.1.0/schema.json",
+  "title": "View Application Extension",
+  "description": "STAC Application for STAC Items and STAC Collections.",
+  "type": "object",
+  "required": ["stac_extensions"],
+  "properties": {
+    "stac_extensions": {
+      "type": "array",
+      "contains": {
+        "const": "https://stac-extensions.github.io/application/v0.1.0/schema.json"
+      }
+    }
+  },
+  "oneOf": [
+    {
+      "$comment": "This is the schema for STAC Items.",
+      "type": "object",
+      "required": ["type"],
+      "properties": {
+        "type": {
+          "const": "Feature"
+        }
+      },
+      "anyOf": [
+        {
+          "required": ["properties"],
+          "properties": {
+            "properties": {
+              "$ref": "#/definitions/requirements_and_fields"
+            }
+          }
+        },
+        {
+          "$ref": "#/definitions/assets"
+        },
+        {
+          "$ref": "#/definitions/links"
+        }
+      ]
+    },
+    {
+      "$comment": "This is the schema for STAC Collections.",
+      "type": "object",
+      "required": ["type"],
+      "properties": {
+        "type": {
+          "const": "Collection"
+        }
+      },
+      "anyOf": [
+        {
+          "$ref": "#/definitions/assets"
+        },
+        {
+          "$ref": "#/definitions/links"
+        },
+        {
+          "required": ["item_assets"],
+          "properties": {
+            "item_assets": {
+              "$ref": "#/definitions/asset_contains"
+            }
+          }
+        },
+        {
+          "$comment": "This is the schema for the fields in Summaries. By default, only checks the existence of the properties, but not the schema of the summaries.",
+          "required": ["summaries"],
+          "properties": {
+            "summaries": {
+              "$ref": "#/definitions/require_any_field"
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "definitions": {
+    "links": {
+      "$comment": "todo: Add links schema"
+    },
+    "assets": {
+      "required": ["assets"],
+      "properties": {
+        "assets": {
+          "$ref": "#/definitions/asset_contains"
+        }
+      }
+    },
+    "asset_contains": {
+      "type": "object",
+      "not": {
+        "additionalProperties": {
+          "not": {
+            "$ref": "#/definitions/requirements_and_fields"
+          }
+        }
+      }
+    },
+    "requirements_and_fields": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/require_any_field"
+        },
+        {
+          "$ref": "#/definitions/fields"
+        }
+      ]
+    },
+    "require_any_field": {
+      "$comment": "Please list all fields here so that we can force the existence of one of them in other parts of the schemas.",
+      "anyOf": [
+        { "required": ["application:type"] },
+        { "required": ["application:embedded"] },
+        { "required": ["application:language"] }
+      ]
+    },
+    "fields": {
+      "$comment": "Add your new fields here. Don't require them here, do that above in the item schema.",
+      "type": "object",
+      "properties": {
+        "application:type": {
+          "type": "string",
+          "minLength": 1
+        },
+        "application:embedded": {
+          "type": "boolean",
+          "default": false
+        },
+        "application:language": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 100,
+          "pattern": "[^\\r\\n]+"
+        }
+      },
+      "patternProperties": {
+        "^(?!application:)": {
+          "$comment": "Do not allow unspecified fields prefixed with view:"
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}
