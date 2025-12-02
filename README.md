@@ -128,13 +128,22 @@ The Link Object for a RMarkdown document that shows R code:
 ## Relation types
 
 The following types should be used as applicable `rel` types in the
-[Link Object](https://github.com/radiantearth/stac-spec/tree/master/item-spec/item-spec.md#link-object).
+[Link Object](https://github.com/radiantearth/stac-spec/blob/master/commons/links.md#link-object).
 
 | Type                 | Description |
 | -------------------- | ----------- |
 | example              | A reference to example code. |
 | application          | A reference to an application. |
 | application-platform | A reference to a platform that can execute applications. |
+
+## Roles
+
+The following types should be used as applicable `roles` in the Link or
+[Asset Object](https://github.com/radiantearth/stac-spec/blob/master/commons/assets.md#asset-object).
+
+| Type                 | Description |
+| -------------------- | ----------- |
+| example              | A reference to example data. |
 
 ## Contributing
 
