@@ -135,6 +135,7 @@ The following types should be used as applicable `rel` types in the
 | example              | A reference to example code. |
 | application          | A reference to an application. |
 | application-platform | A reference to a platform that can execute applications. |
+| vcs                  | A reference to a version control system, e.g. the GitHub repository of the catalog or application. |
 
 ## Roles
 
