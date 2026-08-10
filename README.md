@@ -163,6 +163,15 @@ The following types should be used as applicable `rel` types in the
 | application          | A reference to an application. |
 | application-platform | A reference to a platform that can execute applications. |
 | vcs                  | A reference to a version control system, e.g. the GitHub repository of the catalog or application. |
+| manifest             | A reference to a document describing the application in more detail, e.g. `package.json` (JavaScript), `pyproject.toml` (Python), or a CodeMeta file. |
+
+## Media Types
+
+The following media types could be used as applicable `type` in the Link and Asset Objects:
+
+| Media Type                       | Description |
+| -------------------------------- | ----------- |
+| application/vnd.codemeta.ld+json | Refers to a [CodeMeta](https://codemeta.github.io/) file/response. |
 
 ## Roles
 
