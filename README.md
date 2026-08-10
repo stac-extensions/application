@@ -33,10 +33,11 @@ The fields in the table below can be used in these parts of STAC documents:
 - [x] Links (incl. Link Templates)
 - [ ] Bands
 
-| Field Name            | Type      | Description |
-| --------------------- | --------- | ----------- |
-| application:container | string    | Specifies whether the given application is embedded into a container format (e.g. PDF, HTML, Jupyter Notebook, Markdown, ...). |
-| application:languages | \[string] | Lists all the languages the application is using. |
+| Field Name             | Type      | Description |
+| ---------------------- | --------- | ----------- |
+| application:container  | string    | Specifies whether the given application is embedded into a container format (e.g. PDF, HTML, Jupyter Notebook, Markdown, ...). |
+| application:entrypoint | string    | The function, method or command to invoke when the referenced code exposes more than one. |
+| application:languages  | \[string] | Lists all the languages the application is using. |
 
 ### application:container
 
@@ -51,6 +52,14 @@ Some common examples include:
 - `Jupyter Notebook`
 - `HTML`
 - `RMarkdown`
+
+### application:entrypoint
+
+Names the specific function, method or command to invoke in the referenced code.
+This is only needed if the code exposes more than one and the correct one cannot be inferred otherwise,
+e.g. a module that provides both a `train` and a `predict` function.
+
+If not provided, the referenced code is expected to have a single, unambiguous entrypoint.
 
 ### application:languages
 

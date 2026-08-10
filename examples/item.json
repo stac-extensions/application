@@ -76,6 +76,16 @@
       }
     },
     {
+      "rel": "example",
+      "title": "Cube generation script",
+      "href": "https://github.com/deepesdl/cube-gen/blob/main/Permafrost/cube.py",
+      "type": "text/x-python",
+      "application:entrypoint": "generate_cube",
+      "application:languages": [
+        "Python"
+      ]
+    },
+    {
       "rel": "application-platform",
       "title": "DeepESDL platform",
       "href": "https://deep.earthsystemdatalab.net/",

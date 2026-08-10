@@ -106,6 +106,10 @@
       "type": "string",
       "minLength": 1
     },
+    "application:entrypoint": {
+      "type": "string",
+      "minLength": 1
+    },
     "application:languages": {
       "type": "array",
       "uniqueItems": true,
@@ -122,6 +126,9 @@
       "properties": {
         "application:container": {
           "$ref": "#/definitions/application:container"
+        },
+        "application:entrypoint": {
+          "$ref": "#/definitions/application:entrypoint"
         },
         "application:languages": {
           "$ref": "#/definitions/application:languages"
@@ -140,6 +147,12 @@
           "type": ["array", "object"],
           "items": {
             "$ref": "#/definitions/application:container"
+          }
+        },
+        "application:entrypoint": {
+          "type": ["array", "object"],
+          "items": {
+            "$ref": "#/definitions/application:entrypoint"
           }
         },
         "application:languages": {
