@@ -102,32 +102,29 @@
     }
   ],
   "definitions": {
-    "application:type": {
+    "application:container": {
       "type": "string",
       "minLength": 1
     },
-    "application:embedded": {
-      "type": "boolean",
-      "default": false
-    },
-    "application:language": {
-      "type": "string",
-      "minLength": 1,
-      "maxLength": 100,
-      "pattern": "[^\\r\\n]+"
+    "application:languages": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 100,
+        "pattern": "[^\\r\\n]+"
+      }
     },
     "fields": {
       "$comment": "Add your new fields here. Don't require them here as they would be required in all places where we reference the fields as possibly allowed.",
       "type": "object",
       "properties": {
-        "application:type": {
-          "$ref": "#/definitions/application:type"
+        "application:container": {
+          "$ref": "#/definitions/application:container"
         },
-        "application:embedded": {
-          "$ref": "#/definitions/application:embedded"
-        },
-        "application:language": {
-          "$ref": "#/definitions/application:language"
+        "application:languages": {
+          "$ref": "#/definitions/application:languages"
         }
       },
       "patternProperties": {
@@ -139,22 +136,16 @@
       "$comment": "These are examples summaries that allows lists, ranges and JSON schemas, depending on how it makes sense for the individual data types of the fields. Validation only works for lists and ranges. JSON Schema (type: object) can always be provided for fields, but the corresponding schema for lists (type: array and items) and ranges (properties) should only be provided if it actually makes sense.",
       "type": "object",
       "properties": {
-        "application:type": {
+        "application:container": {
           "type": ["array", "object"],
           "items": {
-            "$ref": "#/definitions/application:type"
+            "$ref": "#/definitions/application:container"
           }
         },
-        "application:embedded": {
+        "application:languages": {
           "type": ["array", "object"],
           "items": {
-            "$ref": "#/definitions/application:embedded"
-          }
-        },
-        "application:language": {
-          "type": ["array", "object"],
-          "items": {
-            "$ref": "#/definitions/application:language"
+            "$ref": "#/definitions/application:languages"
           }
         }
       },

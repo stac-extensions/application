@@ -11,9 +11,10 @@
     "type": "workflow",
     "title": "ESA CCI permafrost",
     "description": "cube generation workflow for esa-cci-permafrost",
-    "application:type": "jupyter-notebook",
-    "application:embedded": true,
-    "application:language": "Python"
+    "application:container": "Jupyter Notebook",
+    "application:languages": [
+      "Python"
+    ]
   },
   "links": [
     {
@@ -64,12 +65,13 @@
       "href": "https://github.com/deepesdl/cube-gen/blob/main/Permafrost/Create-CCI-Permafrost-cube-EarthCODE.ipynb",
       "file:local_path": "Permafrost/Create-CCI-Permafrost-cube-EarthCODE.ipynb",
       "type": "application/x-ipynb+json",
-      "application:type": "jupyter-notebook",
-      "application:embedded": true,
-      "application:language": "Python",
+      "application:container": "Jupyter Notebook",
+      "application:languages": [
+        "Python"
+      ],
       "jupyter:kernel": {
         "name": "deepesdl-xcube-1.8.3",
-        "pythonVersion": 3.11,
+        "pythonVersion": "3.11",
         "envFile": "https://github.com/deepesdl/cube-gen/blob/main/Permafrost/environment.yml"
       }
     },

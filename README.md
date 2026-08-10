@@ -33,11 +33,32 @@ The fields in the table below can be used in these parts of STAC documents:
 - [x] Links (incl. Link Templates)
 - [ ] Bands
 
-| Field Name           | Type    | Description |
-| -------------------- | ------- | ----------- |
-| application:type     | string  | Type of the application. This is a free-text field without pre-defined values. Please define a well-defined set of types for your usecase. |
-| application:embedded | boolean | Specifies whether the given application is directly the example code (`false`, default, e.g. a Python file) or to a container format (`true`, e.g. PDF, HTML, Jupyter Notebook, Markdown, ...) that contains/describes code snippets. |
-| application:language | string  | If the application is in a specific programming language, specify it here. Should be one of the [languages listed for Linguist](https://github.com/github-linguist/linguist/blob/master/lib/linguist/languages.yml). For example, `JavaScript` or `Python`. If a page contains multiple programming languages, you can use `Multiple`. |
+| Field Name            | Type      | Description |
+| --------------------- | --------- | ----------- |
+| application:container | string    | Specifies whether the given application is embedded into a container format (e.g. PDF, HTML, Jupyter Notebook, Markdown, ...). |
+| application:languages | \[string] | Lists all the languages the application is using. |
+
+### application:container
+
+This fields lists the container format of the application, if applicable.
+Should be any of the [languages listed for Linguist](https://github.com/github-linguist/linguist/blob/master/lib/linguist/languages.yml),
+if one exists. Otherwise, custom values can be used.
+
+If not provided, the application is expected to run on its own, e.g. is simply a Python script (usually a `.py` file).
+
+Some common examples include:
+
+- `Jupyter Notebook`
+- `HTML`
+- `RMarkdown`
+
+### application:languages
+
+This fields lists all the languages the application is using, which can be programming or markup languages depending on the usecase.
+Should be any of the [languages listed for Linguist](https://github.com/github-linguist/linguist/blob/master/lib/linguist/languages.yml),
+e.g. `Python` or `R`.
+
+This field MUST NOT contain the container language (see above).
 
 ## Usage Examples
 
@@ -46,19 +67,21 @@ Examples can be provided directly as source code files or as a document with emb
 ### Examples: Source Code Files
 
 The Link Object for a Python source code file:
+
 ```json
 {
   "rel": "application",
   "href": "https://stac.example/run.py",
-  "title": "Fancy Python app",
+  "title": "Fancy Python script",
   "type": "text/x-python",
   "description": "This describes the *Python* script...",
   "file:size": 123547,
-  "application:language": "Python"
+  "application:languages": ["Python"]
 }
 ```
 
 The Link Object for a JavaScript source code file:
+
 ```json
 {
   "rel": "application",
@@ -67,13 +90,14 @@ The Link Object for a JavaScript source code file:
   "type": "application/javascript",
   "description": "This describes the *JavaScript* code...",
   "file:size": 231,
-  "application:language": "JavaScript"
+  "application:languages": ["JavaScript"]
 }
 ```
 
 ### Examples: Embedded Code
 
 The Link Object for a PDF document with C code:
+
 ```json
 {
   "rel": "example",
@@ -81,12 +105,13 @@ The Link Object for a PDF document with C code:
   "title": "Example PDF containing C",
   "description": "Describes how to do fancy stuff with the data in C",
   "type": "application/pdf",
-  "application:embedded": true,
-  "application:language": "C"
+  "application:container": "PDF",
+  "application:languages": ["C"]
 }
 ```
 
 The Link Object for a Jupyter Notebook containing Python code:
+
 ```json
 {
   "rel": "example",
@@ -94,13 +119,13 @@ The Link Object for a Jupyter Notebook containing Python code:
   "title": "Example Notebook containing Python",
   "description": "Describes how to do fancy stuff with the data in Python",
   "type": "application/x-ipynb+json",
-  "application:type": "jupyter-notebook",
-  "application:embedded": true,
-  "application:language": "Python"
+  "application:container": "Jupyter Notebook",
+  "application:languages": ["Python"]
 }
 ```
 
 The Link Object for a HTML document that shows JavaScript code:
+
 ```json
 {
   "rel": "example",
@@ -108,12 +133,13 @@ The Link Object for a HTML document that shows JavaScript code:
   "title": "Example webpage containing JS",
   "description": "Describes how to do fancy stuff with the data in JavaScript",
   "type": "text/html",
-  "application:embedded": true,
-  "application:language": "JavaScript"
+  "application:container": "HTML",
+  "application:languages": ["JavaScript"]
 }
 ```
 
 The Link Object for a RMarkdown document that shows R code:
+
 ```json
 {
   "rel": "example",
@@ -121,8 +147,8 @@ The Link Object for a RMarkdown document that shows R code:
   "title": "Example RMarkdown document containing R",
   "description": "Describes how to do fancy stuff with the data in R",
   "type": "text/markdown",
-  "application:embedded": true,
-  "application:language": "R"
+  "application:container": "RMarkdown",
+  "application:languages": ["R"]
 }
 ```
 
