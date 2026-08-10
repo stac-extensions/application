@@ -177,7 +177,7 @@ The following types should be used as applicable `rel` types in the
 | example              | A reference to example code. The files could potentially be loaded and rendered as code examples. |
 | describedby          | A reference to prose documentation (e.g. an HTML page or PDF) that describes the application (or data). Use this for content that "renders itself", i.e. should not be loaded and rendered as code example. |
 | application          | A reference to an application. |
-| application-platform | A reference to a platform that can execute applications. |
+| application-platform | A reference to a platform that can execute applications, can also list an application that has executed the application (see also [`processing:facility`](https://github.com/stac-extensions/processing)). |
 | vcs                  | A reference to a version control system, e.g. the GitHub repository of the catalog or application. |
 | manifest             | A reference to a document describing the application in more detail, e.g. `package.json` (JavaScript), `pyproject.toml` (Python), or a CodeMeta file. |
 
