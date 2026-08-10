@@ -1,5 +1,5 @@
 {
-  "stac_version": "1.0.0",
+  "stac_version": "1.1.0",
   "stac_extensions": [
     "https://stac-extensions.github.io/application/v0.1.0/schema.json"
   ],
@@ -12,42 +12,9 @@
     "title": "ESA CCI permafrost",
     "description": "cube generation workflow for esa-cci-permafrost",
     "application:type": "jupyter-notebook",
-    "application:container": true,
-    "application:language": "Python",
-    "keywords": [
-      "Earth Science"
-    ],
-    "contacts": [
-      {
-        "name": "Tejas Morbagal Harish",
-        "organization": "Brockmann Consult GmbH",
-        "links": [
-          {
-            "rel": "about",
-            "type": "text/html",
-            "href": "https://www.brockmann-consult.de/"
-          }
-        ],
-        "roles": [
-          "principal investigator"
-        ]
-      }
-    ],
-    "themes": [
-      {
-        "concepts": [
-          {
-            "id": "cryosphere"
-          }
-        ],
-        "scheme": "https://github.com/stac-extensions/osc#theme"
-      }
-    ],
-    "formats": [],
-    "license": "proprietary",
-    "osc:project": "deep-earth-system-data-lab"
+    "application:embedded": true,
+    "application:language": "Python"
   },
-  "linkTemplates": [],
   "links": [
     {
       "rel": "root",

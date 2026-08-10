@@ -3,7 +3,7 @@
 - **Title:** Application
 - **Identifier:** <https://stac-extensions.github.io/application/v0.1.0/schema.json>
 - **Field Name Prefix:** application
-- **Scope:** Item, Assets, Links
+- **Scope:** Item
 - **Extension [Maturity Classification](https://github.com/radiantearth/stac-spec/tree/master/extensions/README.md#extension-maturity):** Proposal
 - **Owner**: @m-mohr
 
@@ -26,11 +26,12 @@ This extension is the successor of the
 
 The fields in the table below can be used in these parts of STAC documents:
 
-- [ ] Catalogs
-- [ ] Collections
+- [x] Catalogs
+- [x] Collections
 - [x] Item Properties (incl. Summaries in Collections)
-- [x] Assets (for both Collections and Items, incl. Item Asset Definitions in Collections)
-- [x] Links
+- [x] Assets (for both Collections and Items, incl. Item Asset Definitions in Collections and Asset Templates)
+- [x] Links (incl. Link Templates)
+- [ ] Bands
 
 | Field Name           | Type    | Description |
 | -------------------- | ------- | ----------- |
@@ -128,7 +129,7 @@ The Link Object for a RMarkdown document that shows R code:
 ## Relation types
 
 The following types should be used as applicable `rel` types in the
-[Link Object](https://github.com/radiantearth/stac-spec/blob/master/commons/links.md#link-object).
+[Link Object](https://github.com/radiantearth/stac-spec/tree/master/item-spec/item-spec.md#link-object).
 
 | Type                 | Description |
 | -------------------- | ----------- |
@@ -142,9 +143,9 @@ The following types should be used as applicable `rel` types in the
 The following types should be used as applicable `roles` in the Link or
 [Asset Object](https://github.com/radiantearth/stac-spec/blob/master/commons/assets.md#asset-object).
 
-| Type                 | Description |
-| -------------------- | ----------- |
-| example              | A reference to example data. |
+| Type    | Description |
+| ------- | ----------- |
+| example | A reference to example data. |
 
 ## Contributing
 
@@ -156,10 +157,10 @@ for running tests are copied here for convenience.
 
 ### Running tests
 
-The same checks that run as checks on PR's are part of the repository and can be run locally to verify that changes are valid. 
+The same checks that run as checks on PRs are part of the repository and can be run locally to verify that changes are valid.
 To run tests locally, you'll need `npm`, which is a standard part of any [node.js installation](https://nodejs.org/en/download/).
 
-First you'll need to install everything with npm once. Just navigate to the root of this repository and on 
+First you'll need to install everything with npm once. Just navigate to the root of this repository and on
 your command line run:
 
 ```bash
