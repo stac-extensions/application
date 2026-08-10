@@ -1,0 +1,58 @@
+{
+  "stac_version": "1.1.0",
+  "stac_extensions": [
+    "https://stac-extensions.github.io/application/v0.1.0/schema.json"
+  ],
+  "id": "esa-world-cereal-extent",
+  "type": "Feature",
+  "geometry": null,
+  "properties": {
+    "datetime": "2026-04-01T07:16:38Z",
+    "title": "ESA WorldCereal - Crop Type Extent",
+    "description": "Detects crop land at 10m resolution, trained for global use. Based on Sentinel-1 and 2 data, applying a Presto + CatBoost model to map the extent of crops.",
+    "application:languages": [
+      "openEO"
+    ]
+  },
+  "links": [
+    {
+      "rel": "root",
+      "href": "./catalog.json",
+      "type": "application/json",
+      "title": "Application examples"
+    },
+    {
+      "rel": "parent",
+      "href": "./catalog.json",
+      "type": "application/json",
+      "title": "Application examples"
+    },
+    {
+      "rel": "self",
+      "href": "https://stac-extensions.github.io/application/v0.1.0/examples/openeo-udp.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "application",
+      "href": "https://s3.waw4-1.cloudferro.com/workflows/prod/esa-world-cereal-extent-workflow/worldcereal_crop_extent.json",
+      "title": "openEO user-defined process",
+      "type": "application/vnd.openeo+json;type=process",
+      "application:languages": [
+        "openEO"
+      ]
+    },
+    {
+      "rel": "application-platform",
+      "href": "https://dataspace.copernicus.eu/",
+      "title": "Copernicus Data Space Ecosystem",
+      "type": "text/html"
+    },
+    {
+      "rel": "application-execute",
+      "href": "https://editor.openeo.org/?wizard=UDP&wizard~process=worldcereal_crop_extent&wizard~processUrl=https://s3.waw4-1.cloudferro.com/workflows/prod/esa-world-cereal-extent-workflow/worldcereal_crop_extent.json&server=https://openeofed.dataspace.copernicus.eu/openeo",
+      "title": "Run in the openEO Web Editor",
+      "type": "text/html"
+    }
+  ],
+  "assets": {}
+}

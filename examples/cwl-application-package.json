@@ -1,0 +1,56 @@
+{
+  "stac_version": "1.1.0",
+  "stac_extensions": [
+    "https://stac-extensions.github.io/application/v0.1.0/schema.json"
+  ],
+  "id": "fairsendd",
+  "type": "Feature",
+  "geometry": null,
+  "properties": {
+    "datetime": "2025-01-01T00:00:00Z",
+    "title": "FAIRSenDD: FAIR workflow for Sentinel-1 based Deforestation Detection",
+    "description": "Detects forest change in Sentinel-1 time series using Recurrence Quantification Analysis, published as an OGC Application Package.",
+    "license": "MIT",
+    "application:container": "Common Workflow Language",
+    "application:languages": [
+      "Julia"
+    ]
+  },
+  "links": [
+    {
+      "rel": "root",
+      "href": "./catalog.json",
+      "type": "application/json",
+      "title": "Application examples"
+    },
+    {
+      "rel": "parent",
+      "href": "./catalog.json",
+      "type": "application/json",
+      "title": "Application examples"
+    },
+    {
+      "rel": "self",
+      "href": "https://stac-extensions.github.io/application/v0.1.0/examples/cwl-application-package.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "vcs",
+      "href": "https://github.com/EarthyScience/FAIRSenDD",
+      "title": "Git source repository",
+      "vcs:type": "git",
+      "vcs:branch": "main"
+    },
+    {
+      "rel": "application",
+      "href": "https://raw.githubusercontent.com/EarthyScience/FAIRSenDD/refs/heads/main/ogc-app-cwl/fairsendd.cwl",
+      "title": "OGC Application Package",
+      "type": "application/cwl+yaml",
+      "application:container": "Common Workflow Language",
+      "application:languages": [
+        "Julia"
+      ]
+    }
+  ],
+  "assets": {}
+}

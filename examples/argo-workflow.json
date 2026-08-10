@@ -1,0 +1,68 @@
+{
+  "stac_version": "1.1.0",
+  "stac_extensions": [
+    "https://stac-extensions.github.io/application/v0.1.0/schema.json"
+  ],
+  "id": "polaris",
+  "type": "Feature",
+  "geometry": null,
+  "properties": {
+    "datetime": "2025-02-19T23:00:00Z",
+    "title": "POLARIS",
+    "description": "Polar Operational Limit Assessment Risk Index System (POLARIS) algorithm.",
+    "license": "CC-BY-SA-4.0",
+    "application:container": "Argo Workflow",
+    "application:languages": [
+      "Python"
+    ]
+  },
+  "links": [
+    {
+      "rel": "root",
+      "href": "./catalog.json",
+      "type": "application/json",
+      "title": "Application examples"
+    },
+    {
+      "rel": "parent",
+      "href": "./catalog.json",
+      "type": "application/json",
+      "title": "Application examples"
+    },
+    {
+      "rel": "self",
+      "href": "https://stac-extensions.github.io/application/v0.1.0/examples/argo-workflow.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "vcs",
+      "href": "https://github.com/gtif-cerulean/polaris.git",
+      "title": "Git source repository",
+      "vcs:type": "git",
+      "vcs:branch": "main"
+    },
+    {
+      "rel": "application",
+      "href": "https://github.com/gtif-cerulean/polaris/blob/main/workflow.yml",
+      "title": "POLARIS workflow",
+      "type": "application/x-argo-workflow-yaml",
+      "application:container": "Argo Workflow",
+      "application:languages": [
+        "Python"
+      ]
+    },
+    {
+      "rel": "application-platform",
+      "href": "https://workspace.cif.hub-otc.eox.at/",
+      "title": "EOxHub Workspaces",
+      "type": "text/html"
+    },
+    {
+      "rel": "application-execute",
+      "href": "https://harshness-map.gtif.eox.at/processes/execute-polaris",
+      "title": "Trigger the workflow via pygeoapi",
+      "type": "text/html"
+    }
+  ],
+  "assets": {}
+}
