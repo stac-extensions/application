@@ -60,47 +60,53 @@ e.g. `Python` or `R`.
 
 This field MUST NOT contain the container language (see above).
 
+Clients MAY use this field as a hint for syntax highlighting when rendering code inline as a code block.
+See the [relation types](#relation-types) for when a reference is rendered inline (`example`) versus shown as a link (`describedby`).
+
+Highlighting SHOULD only be applied when exactly one language is listed and no `application:container` is set.
+
 ## Usage Examples
 
 Examples can be provided directly as source code files or as a document with embedded code (e.g. web page, PDF document, Jupyter Notebook).
 
 ### Examples: Source Code Files
 
-The Link Object for a Python source code file:
+The Link Object for a Python application that is rather large and is expected to be executed directly:
 
 ```json
 {
   "rel": "application",
   "href": "https://stac.example/run.py",
-  "title": "Fancy Python script",
+  "title": "Fancy Python application",
   "type": "text/x-python",
-  "description": "This describes the *Python* script...",
+  "description": "This describes a complex *Python* application...",
   "file:size": 123547,
   "application:languages": ["Python"]
 }
 ```
 
-The Link Object for a JavaScript source code file:
+The Link Object for an example script that a client can render inline as a
+highlighted code block:
 
 ```json
 {
-  "rel": "application",
-  "href": "https://stac.example/run.js",
-  "title": "Fancy JavaScript app",
-  "type": "application/javascript",
-  "description": "This describes the *JavaScript* code...",
-  "file:size": 231,
-  "application:languages": ["JavaScript"]
+  "rel": "example",
+  "href": "https://stac.example/example.py",
+  "title": "Example: read the data with rasterio",
+  "description": "Shows how to open and read the data in *Python*",
+  "type": "text/x-python",
+  "file:size": 842,
+  "application:languages": ["Python"]
 }
 ```
 
-### Examples: Embedded Code
+### Examples: Code in a Container
 
 The Link Object for a PDF document with C code:
 
 ```json
 {
-  "rel": "example",
+  "rel": "describedby",
   "href": "https://stac.example/py-example.pdf",
   "title": "Example PDF containing C",
   "description": "Describes how to do fancy stuff with the data in C",
@@ -114,7 +120,7 @@ The Link Object for a Jupyter Notebook containing Python code:
 
 ```json
 {
-  "rel": "example",
+  "rel": "describedby",
   "href": "https://stac.example/py-notebook.ipynb",
   "title": "Example Notebook containing Python",
   "description": "Describes how to do fancy stuff with the data in Python",
@@ -128,7 +134,7 @@ The Link Object for a HTML document that shows JavaScript code:
 
 ```json
 {
-  "rel": "example",
+  "rel": "describedby",
   "href": "https://stac.example/js-example.html",
   "title": "Example webpage containing JS",
   "description": "Describes how to do fancy stuff with the data in JavaScript",
@@ -142,7 +148,7 @@ The Link Object for a RMarkdown document that shows R code:
 
 ```json
 {
-  "rel": "example",
+  "rel": "describedby",
   "href": "https://stac.example/js-example.rmd",
   "title": "Example RMarkdown document containing R",
   "description": "Describes how to do fancy stuff with the data in R",
@@ -159,7 +165,8 @@ The following types should be used as applicable `rel` types in the
 
 | Type                 | Description |
 | -------------------- | ----------- |
-| example              | A reference to example code. |
+| example              | A reference to example code. The files could potentially be loaded and rendered as code examples. |
+| describedby          | A reference to prose documentation (e.g. an HTML page or PDF) that describes the application (or data). Use this for content that "renders itself", i.e. should not be loaded and rendered as code example. |
 | application          | A reference to an application. |
 | application-platform | A reference to a platform that can execute applications. |
 | vcs                  | A reference to a version control system, e.g. the GitHub repository of the catalog or application. |
