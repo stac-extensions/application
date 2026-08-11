@@ -1,0 +1,43 @@
+{
+  "stac_version": "1.1.0",
+  "type": "Catalog",
+  "id": "application-examples",
+  "description": "Examples for the Application extension, one per application type.",
+  "links": [
+    {
+      "rel": "root",
+      "href": "./catalog.json",
+      "type": "application/json",
+      "title": "Application examples"
+    },
+    {
+      "rel": "self",
+      "href": "https://stac-extensions.github.io/application/v0.1.0/examples/catalog.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "child",
+      "href": "./jupyter-notebook.json",
+      "type": "application/json",
+      "title": "Jupyter Notebook"
+    },
+    {
+      "rel": "child",
+      "href": "./argo-workflow.json",
+      "type": "application/json",
+      "title": "Argo Workflow"
+    },
+    {
+      "rel": "child",
+      "href": "./openeo-udp.json",
+      "type": "application/json",
+      "title": "openEO UDP"
+    },
+    {
+      "rel": "child",
+      "href": "./cwl-application-package.json",
+      "type": "application/json",
+      "title": "CWL / OGC Application Package"
+    }
+  ]
+}

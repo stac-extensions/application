@@ -17,8 +17,17 @@ Example could be potentially incomplete code snippets that might be shown with c
 This extension is the successor of the
 [Example Links Extension](https://github.com/stac-extensions/example-links).
 
+> [!NOTE]
+> STAC is not best suited for describing applications through a STAC Item.
+> This extension makes more sense to add additional context to geospatial data
+> or can be used to describe applications in OGC API - Records.
+
 - Examples:
-  - [Item example](examples/item.json): Shows the basic usage of the extension in a STAC Item
+  - [Catalog](examples/catalog.json): Links to all examples below
+  - [Jupyter Notebook](examples/jupyter-notebook.json)
+  - [Argo Workflow](examples/argo-workflow.json)
+  - [openEO UDP](examples/openeo-udp.json)
+  - [CWL / OGC Application Package](examples/cwl-application-package.json)
 - [JSON Schema](json-schema/schema.json)
 - [Changelog](./CHANGELOG.md)
 
@@ -64,8 +73,8 @@ If not provided, the referenced code is expected to have a single, unambiguous e
 ### application:languages
 
 This fields lists all the languages the application is using, which can be programming or markup languages depending on the usecase.
-Should be any of the [languages listed for Linguist](https://github.com/github-linguist/linguist/blob/master/lib/linguist/languages.yml),
-e.g. `Python` or `R`.
+Should be any of the [languages listed for Linguist](https://github.com/github-linguist/linguist/blob/master/lib/linguist/languages.yml)
+if one exists (e.g. `Python` or `R`). Otherwise, custom values can be used (e.g. `openEO`).
 
 This field MUST NOT contain the container language (see above).
 
@@ -74,11 +83,21 @@ See the [relation types](#relation-types) for when a reference is rendered inlin
 
 Highlighting SHOULD only be applied when exactly one language is listed and no `application:container` is set.
 
+## Container and Language Specifics
+
+### Jupyter Notebooks
+
+Additional information about Jupyter Notebooks can also be embedded into the
+Jupyter Notbook metadata section directly, see also Annex C of the
+[CEOS Jupyter Notbook Best Practices](https://ceos.org/document_management/Working_Groups/WGISS/Documents/WGISS%20Best%20Practices/CEOS_JupterNotebooks_Best%20Practice_v1.1.pdf).
+
+### openEO
+
 ## Usage Examples
 
 Examples can be provided directly as source code files or as a document with embedded code (e.g. web page, PDF document, Jupyter Notebook).
 
-### Examples: Source Code Files
+### Source Code Files
 
 The Link Object for a Python application that is rather large and is expected to be executed directly:
 
@@ -109,7 +128,7 @@ highlighted code block:
 }
 ```
 
-### Examples: Code in a Container
+### Code in a Container
 
 The Link Object for a PDF document with C code:
 
@@ -178,25 +197,40 @@ The following types should be used as applicable `rel` types in the
 | describedby          | A reference to prose documentation (e.g. an HTML page or PDF) that describes the application (or data). Use this for content that "renders itself", i.e. should not be loaded and rendered as code example. |
 | application          | A reference to an application. |
 | application-platform | A reference to a platform that can execute applications, can also list an application that has executed the application (see also [`processing:facility`](https://github.com/stac-extensions/processing)). |
+| application-input    | A reference to actual or example inputs for the application, e.g. a parameters file. |
+| application-execute  | A reference to an endpoint or URL that triggers execution of the application, e.g. an [OGC API - Processes](https://ogcapi.ogc.org/processes/) endpoint or a web-based user interface. |
 | vcs                  | A reference to a version control system, e.g. the GitHub repository of the catalog or application. |
-| manifest             | A reference to a document describing the application in more detail, e.g. `package.json` (JavaScript), `pyproject.toml` (Python), or a CodeMeta file. |
+| manifest             | A reference to a document describing the application (may include its environment and dependencies) in more detail, e.g. `package.json` (JavaScript), `pyproject.toml` (Python), `environment.yml` (Conda), or a CodeMeta file. |
+
+### application
+
+As an alternative to linking to the application code, the processing extension
+allows to embed the application code directly into the STAC entity via `processing:expression`.
+This is commonly done for openEO processing results, for example.
+It is important to note that this alternative is meant to be used only for describing how data was processed,
+not for how it could be processed in the future.
 
 ## Media Types
 
 The following media types could be used as applicable `type` in the Link and Asset Objects:
 
-| Media Type                       | Description |
-| -------------------------------- | ----------- |
-| application/vnd.codemeta.ld+json | Refers to a [CodeMeta](https://codemeta.github.io/) file/response. |
+| Media Type                                | Description |
+| ----------------------------------------- | ----------- |
+| application/x-ipynb+json                  | A [Jupyter Notebook](https://nbformat.readthedocs.io/). Use with `"application:container": "Jupyter Notebook"`. |
+| application/vnd.openeo+json;type=process  | An [openEO](https://openeo.org) user-defined process (UDP). Use with `"application:languages": ["openEO"]`. |
+| application/cwl, application/cwl+yaml, application/cwl+json | A [Common Workflow Language](https://www.commonwl.org) document (e.g. an [OGC Application Package](https://docs.ogc.org/bp/20-089r1.html)), either encoding, YAML or JSON. Use with `"application:container": "Common Workflow Language"`. |
+| application/x-argo-workflow-yaml          | An [Argo Workflows](https://argo-workflows.readthedocs.io/) manifest. Use with `"application:container": "Argo Workflow"`. |
+| application/vnd.codemeta.ld+json          | Refers to a [CodeMeta](https://codemeta.github.io/) file/response. |
 
 ## Roles
 
 The following types should be used as applicable `roles` in the Link or
 [Asset Object](https://github.com/radiantearth/stac-spec/blob/master/commons/assets.md#asset-object).
 
-| Type    | Description |
-| ------- | ----------- |
-| example | A reference to example data. |
+| Role     | Description |
+| -------- | ----------- |
+| example  | Example data, see the `example` relation type for more details. |
+| manifest | A manifest filet, see the `manifest` relation tyope for more details. |
 
 ## Contributing
 
