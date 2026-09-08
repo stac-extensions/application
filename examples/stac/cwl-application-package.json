@@ -31,7 +31,7 @@
     },
     {
       "rel": "self",
-      "href": "https://stac-extensions.github.io/application/v0.1.0/examples/cwl-application-package.json",
+      "href": "https://stac-extensions.github.io/application/v0.1.0/examples/stac/cwl-application-package.json",
       "type": "application/json"
     },
     {

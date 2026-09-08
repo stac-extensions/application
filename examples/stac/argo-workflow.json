@@ -31,7 +31,7 @@
     },
     {
       "rel": "self",
-      "href": "https://stac-extensions.github.io/application/v0.1.0/examples/argo-workflow.json",
+      "href": "https://stac-extensions.github.io/application/v0.1.0/examples/stac/argo-workflow.json",
       "type": "application/json"
     },
     {

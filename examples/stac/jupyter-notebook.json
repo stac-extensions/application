@@ -30,7 +30,7 @@
     },
     {
       "rel": "self",
-      "href": "https://stac-extensions.github.io/application/v0.1.0/examples/jupyter-notebook.json",
+      "href": "https://stac-extensions.github.io/application/v0.1.0/examples/stac/jupyter-notebook.json",
       "type": "application/json"
     },
     {

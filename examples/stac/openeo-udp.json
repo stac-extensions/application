@@ -29,7 +29,7 @@
     },
     {
       "rel": "self",
-      "href": "https://stac-extensions.github.io/application/v0.1.0/examples/openeo-udp.json",
+      "href": "https://stac-extensions.github.io/application/v0.1.0/examples/stac/openeo-udp.json",
       "type": "application/json"
     },
     {

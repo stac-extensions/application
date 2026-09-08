@@ -23,11 +23,12 @@ This extension is the successor of the
 > or can be used to describe applications in OGC API - Records.
 
 - Examples:
-  - [Catalog](examples/catalog.json): Links to all examples below
-  - [Jupyter Notebook](examples/jupyter-notebook.json)
-  - [Argo Workflow](examples/argo-workflow.json)
-  - [openEO UDP](examples/openeo-udp.json)
-  - [CWL / OGC Application Package](examples/cwl-application-package.json)
+  - [Catalog](examples/stac/catalog.json): Links to all examples below
+  - [Jupyter Notebook](examples/stac/jupyter-notebook.json)
+  - [Argo Workflow](examples/stac/argo-workflow.json)
+  - [openEO UDP](examples/stac/openeo-udp.json)
+  - [CWL / OGC Application Package](examples/stac/cwl-application-package.json)
+  - [Examples for usage in OGC API - Records](examples/ogcapi-records/)
 - [JSON Schema](json-schema/schema.json)
 - [Changelog](./CHANGELOG.md)
 
@@ -62,6 +63,8 @@ Some common examples include:
 - `HTML`
 - `RMarkdown`
 
+Please submit any new container via GitHub issues so that we can make a list of names everyone can reuse.
+
 ### application:entrypoint
 
 Names the specific function, method or command to invoke in the referenced code.
@@ -88,10 +91,8 @@ Highlighting SHOULD only be applied when exactly one language is listed and no `
 ### Jupyter Notebooks
 
 Additional information about Jupyter Notebooks can also be embedded into the
-Jupyter Notbook metadata section directly, see also Annex C of the
-[CEOS Jupyter Notbook Best Practices](https://ceos.org/document_management/Working_Groups/WGISS/Documents/WGISS%20Best%20Practices/CEOS_JupterNotebooks_Best%20Practice_v1.1.pdf).
-
-### openEO
+Jupyter Notebook metadata section directly, see also Annex C of the
+[CEOS Jupyter Notebook Best Practices](https://ceos.org/document_management/Working_Groups/WGISS/Documents/WGISS%20Best%20Practices/CEOS_JupterNotebooks_Best%20Practice_v1.1.pdf).
 
 ## Usage Examples
 
@@ -198,7 +199,7 @@ The following types should be used as applicable `rel` types in the
 | application          | A reference to an application. |
 | application-platform | A reference to a platform that can execute applications, can also list an application that has executed the application (see also [`processing:facility`](https://github.com/stac-extensions/processing)). |
 | application-input    | A reference to actual or example inputs for the application, e.g. a parameters file. |
-| application-execute  | A reference to an endpoint or URL that triggers execution of the application, e.g. an [OGC API - Processes](https://ogcapi.ogc.org/processes/) endpoint or a web-based user interface. |
+| application-execute  | A reference to an endpoint or URL that triggers execution of the application, e.g. an [OGC API - Processes](https://ogcapi.ogc.org/processes/) endpoint or a web-based user interface. To reference the execution that *produced* a dataset (provenance), use `processing-execution` from the [Processing extension](https://github.com/stac-extensions/processing) instead. |
 | vcs                  | A reference to a version control system, e.g. the GitHub repository of the catalog or application. |
 | manifest             | A reference to a document describing the application (may include its environment and dependencies) in more detail, e.g. `package.json` (JavaScript), `pyproject.toml` (Python), `environment.yml` (Conda), or a CodeMeta file. |
 

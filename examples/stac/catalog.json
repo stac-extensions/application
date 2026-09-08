@@ -12,7 +12,7 @@
     },
     {
       "rel": "self",
-      "href": "https://stac-extensions.github.io/application/v0.1.0/examples/catalog.json",
+      "href": "https://stac-extensions.github.io/application/v0.1.0/examples/stac/catalog.json",
       "type": "application/json"
     },
     {
