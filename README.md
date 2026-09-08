@@ -231,7 +231,7 @@ The following types should be used as applicable `roles` in the Link or
 | Role     | Description |
 | -------- | ----------- |
 | example  | Example data, see the `example` relation type for more details. |
-| manifest | A manifest filet, see the `manifest` relation tyope for more details. |
+| manifest | A manifest file, see the `manifest` relation type for more details. |
 
 ## Contributing
 
